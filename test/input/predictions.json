@@ -1,0 +1,149 @@
+[
+    {
+        "pk": "bf330895-59cf-4c19-8065-edc60c1deafe",
+        "inputs": [
+            {
+                "file": null,
+                "image": {
+                    "name": "the_original_filename_of_the_file_that_was_uploaded.suffix"
+                },
+                "value": null,
+                "interface": {
+                    "slug": "stacked-histopathology-roi-cropouts",
+                    "kind": "Image",
+                    "super_kind": "Image",
+                    "relative_path": "images/stacked-histopathology-roi-cropouts",
+                    "example_value": null
+                }
+            }
+        ],
+        "outputs": [
+            {
+                "file": "https://grand-challenge.org/media/some-link/multiple-mitotic-figure-classification.json",
+                "image": null,
+                "value": null,
+                "interface": {
+                    "slug": "multiple-mitotic-figure-classification",
+                    "kind": "Anything",
+                    "super_kind": "File",
+                    "relative_path": "multiple-mitotic-figure-classification.json",
+                    "example_value": [
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.56
+                        }
+                    ]
+                }
+            }
+        ],
+        "status": "Succeeded",
+        "started_at": "2024-11-29T10:31:25.691799Z",
+        "completed_at": "2024-11-29T10:31:50.691799Z"
+    },
+    {
+        "pk": "012079d4-8a8f-4e61-9c4c-3a0d289dfe12",
+        "inputs": [
+            {
+                "file": null,
+                "image": {
+                    "name": "the_original_filename_of_the_file_that_was_uploaded.suffix"
+                },
+                "value": null,
+                "interface": {
+                    "slug": "stacked-histopathology-roi-cropouts",
+                    "kind": "Image",
+                    "super_kind": "Image",
+                    "relative_path": "images/stacked-histopathology-roi-cropouts",
+                    "example_value": null
+                }
+            }
+        ],
+        "outputs": [
+            {
+                "file": "https://grand-challenge.org/media/some-link/multiple-mitotic-figure-classification.json",
+                "image": null,
+                "value": null,
+                "interface": {
+                    "slug": "multiple-mitotic-figure-classification",
+                    "kind": "Anything",
+                    "super_kind": "File",
+                    "relative_path": "multiple-mitotic-figure-classification.json",
+                    "example_value": [
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.56
+                        }
+                    ]
+                }
+            }
+        ],
+        "status": "Succeeded",
+        "started_at": "2024-11-29T10:31:25.691799Z",
+        "completed_at": "2024-11-29T10:31:50.691799Z"
+    },
+    {
+        "pk": "9474d333-fb1e-4db4-890c-9d3a4c94b336",
+        "inputs": [
+            {
+                "file": null,
+                "image": {
+                    "name": "the_original_filename_of_the_file_that_was_uploaded.suffix"
+                },
+                "value": null,
+                "interface": {
+                    "slug": "stacked-histopathology-roi-cropouts",
+                    "kind": "Image",
+                    "super_kind": "Image",
+                    "relative_path": "images/stacked-histopathology-roi-cropouts",
+                    "example_value": null
+                }
+            }
+        ],
+        "outputs": [
+            {
+                "file": "https://grand-challenge.org/media/some-link/multiple-mitotic-figure-classification.json",
+                "image": null,
+                "value": null,
+                "interface": {
+                    "slug": "multiple-mitotic-figure-classification",
+                    "kind": "Anything",
+                    "super_kind": "File",
+                    "relative_path": "multiple-mitotic-figure-classification.json",
+                    "example_value": [
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.56
+                        }
+                    ]
+                }
+            }
+        ],
+        "status": "Succeeded",
+        "started_at": "2024-11-29T10:31:25.691799Z",
+        "completed_at": "2024-11-29T10:31:50.691799Z"
+    }
+]
