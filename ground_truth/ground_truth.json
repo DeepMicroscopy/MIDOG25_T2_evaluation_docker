@@ -1,0 +1,14 @@
+[{"image": "stack_1.tiff", 
+  "labels": ["normal", "normal", "normal", "atypical", "atypical", "normal", "normal", "atypical", "normal", "normal", "normal", "normal", "normal", "normal", "normal", "normal"], 
+  "tumordomains": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}, 
+ {"image": "stack_2.tiff", 
+  "labels": ["normal", "normal", "normal", "normal", "atypical", "normal", "normal", "atypical", "normal", "normal", "normal", "normal", "normal", "normal", "atypical", "normal"], 
+  "tumordomains": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]}, 
+{"image": "stack_3.tiff", 
+ "labels": ["normal", "normal", "normal", "normal", "normal", "atypical", "normal", "normal", "normal", "atypical", "normal", "normal", "normal", "normal", "normal", "normal"], 
+ "tumordomains": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]},  
+ {"image": "stack_747.tiff", 
+ "labels": ["normal"], 
+ "tumordomains": [6]}
+]
+

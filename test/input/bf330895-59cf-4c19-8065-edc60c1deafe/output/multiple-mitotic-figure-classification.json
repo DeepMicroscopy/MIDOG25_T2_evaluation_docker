@@ -1,14 +1,64 @@
-[
-    {
-        "class": "atypical",
-        "confidence": 0.84
-    },
-    {
-        "class": "normal",
-        "confidence": 0.53
-    },
-    {
-        "class": "atypical",
-        "confidence": 0.56
-    }
-]
+                        [{
+                            "class": "normal",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.63
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.64
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.73
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.56
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.63
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.63
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.56
+                        }]

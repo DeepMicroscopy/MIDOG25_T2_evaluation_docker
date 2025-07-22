@@ -5,7 +5,7 @@
             {
                 "file": null,
                 "image": {
-                    "name": "the_original_filename_of_the_file_that_was_uploaded.suffix"
+                    "name": "stack_1.tiff"
                 },
                 "value": null,
                 "interface": {
@@ -29,6 +29,22 @@
                     "relative_path": "multiple-mitotic-figure-classification.json",
                     "example_value": [
                         {
+                            "class": "normal",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.63
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.64
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.73
+                        },
+                        {
                             "class": "atypical",
                             "confidence": 0.84
                         },
@@ -37,10 +53,46 @@
                             "confidence": 0.53
                         },
                         {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.56
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.63
+                        },
+                        {
                             "class": "atypical",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.63
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "normal",
                             "confidence": 0.56
                         }
-                    ]
+                    ] 
                 }
             }
         ],
@@ -54,7 +106,7 @@
             {
                 "file": null,
                 "image": {
-                    "name": "the_original_filename_of_the_file_that_was_uploaded.suffix"
+                    "name": "stack_2.tiff"
                 },
                 "value": null,
                 "interface": {
@@ -87,9 +139,60 @@
                         },
                         {
                             "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "atypical",
                             "confidence": 0.56
-                        }
-                    ]
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "normal",
+                            "confidence": 0.53
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.84
+                        },
+                        {
+                            "class": "atypical",
+                            "confidence": 0.56
+                        }                    ]
                 }
             }
         ],
@@ -103,7 +206,7 @@
             {
                 "file": null,
                 "image": {
-                    "name": "the_original_filename_of_the_file_that_was_uploaded.suffix"
+                    "name": "stack_747.tiff"
                 },
                 "value": null,
                 "interface": {
@@ -127,16 +230,12 @@
                     "relative_path": "multiple-mitotic-figure-classification.json",
                     "example_value": [
                         {
-                            "class": "atypical",
+                            "class": "normal",
                             "confidence": 0.84
                         },
                         {
-                            "class": "normal",
-                            "confidence": 0.53
-                        },
-                        {
                             "class": "atypical",
-                            "confidence": 0.56
+                            "confidence": 0.54
                         }
                     ]
                 }

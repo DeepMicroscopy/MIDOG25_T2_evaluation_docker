@@ -29,10 +29,10 @@ Happy programming!
 """
 
 import json
-
+from sklearn.metrics import roc_auc_score, accuracy_score, recall_score, precision_score
 
 import random
-from statistics import mean
+import numpy as np 
 from pathlib import Path
 from pprint import pformat, pprint
 from helpers import run_prediction_processing, tree
@@ -56,10 +56,42 @@ def main():
 
     # We have the results per prediction, we can aggregate the results and
     # generate an overall score(s) for this submission
+
+    total_tps = int(np.sum([r["tps"] for r in metrics['results']]))
+    total_fps = int(np.sum([r["fps"] for r in metrics['results']]))
+    total_fns = int(np.sum([r["fns"] for r in metrics['results']]))
+    total_tns = int(np.sum([r["tns"] for r in metrics['results']]))
+    total_sens = total_tps / (total_tps + total_fns)
+    total_spec = total_tns / (total_tns + total_fps)
+    all_gt = np.hstack([r['gt'] for r in metrics['results']])
+    all_pred = np.hstack([r['output'] for r in metrics['results']])
+    all_score = np.hstack([r['score'] for r in metrics['results']])
+    roc_auc = roc_auc_score(all_gt, all_score)
+
+    tumordomain = np.hstack([r['tumor_domains'] for r in metrics['results']])
+    unique_tds = np.sort(np.unique(tumordomain))
+
     if metrics["results"]:
         metrics["aggregates"] = {
-            "my_metric": mean(result["my_metric"] for result in metrics["results"])
+            "overall_sensitivity": float(total_sens),
+            "overall_specificity": float(total_spec),
+            "overall_balanced_accuracy" : float((total_spec+total_sens)/2),
+            "overall_roc_auc" : roc_auc,
+            "overall_accuracy" : float((total_tps+total_tns)/(total_tps+total_fns+total_fps+total_tns))
         }
+
+        for td in unique_tds:
+            sens=recall_score(y_true=all_gt[tumordomain == td], y_pred=all_pred[tumordomain==td])
+            spec=recall_score(y_true=all_gt[tumordomain == td], y_pred=all_pred[tumordomain==td],pos_label=0)
+            metrics["aggregates"][f"domain_{td}"] = {
+                "sensitivity": sens,
+                "specificity": spec,
+                "balanced_accuracy": (sens+spec)/2, 
+                "accuracy" : accuracy_score(y_true=all_gt[tumordomain == td], y_pred=all_pred[tumordomain==td]),
+                "roc_auc" : roc_auc_score(y_true=all_gt[tumordomain == td], y_score=all_score[tumordomain == td])
+            }
+
+    metrics['results'] = {} # clear results to not show individual results in log
 
     # Make sure to save the metrics
     write_metrics(metrics=metrics)
@@ -109,28 +141,70 @@ def process_interf0(
     # Fourthly, load your ground truth
     # Include your ground truth in one of two ways:
 
-    # Option 1: include it in your Docker-container image under resources/
-    resource_dir = Path("/opt/app/resources")
-    with open(resource_dir / "some_resource.txt", "r") as f:
-        truth = f.read()
-    report += truth
-
     # Option 2: upload it as a tarball to Grand Challenge
     # Go to phase settings and upload it under Ground Truths. Your ground truth will be extracted to `ground_truth_dir` at runtime.
     ground_truth_dir = Path("/opt/ml/input/data/ground_truth")
     with open(
-        ground_truth_dir / "a_tarball_subdirectory" / "some_tarball_resource.txt", "r"
+        ground_truth_dir / "ground_truth.json", "r"
     ) as f:
         truth = f.read()
+
+
     report += truth
+    #print(report)
+    classes_to_ids={'normal':0, 'atypical':1}
 
-    print(report)
 
-    # TODO: compare the results to your ground truth and compute some metrics
+    truth = json.loads(truth)
+    truth_dict = {x['image'] : x['labels'] for x in truth}
+    domain_dict = {x['image'] : x['tumordomains'] for x in truth}
 
-    # For now, we will just report back some bogus metric
+    if image_name_stacked_histopathology_roi_cropouts not in truth_dict:
+        raise ValueError('No GT for this image: '+str(image_name_stacked_histopathology_roi_cropouts))
+
+    if len(result_multiple_mitotic_figure_classification) != len(truth_dict[image_name_stacked_histopathology_roi_cropouts]):
+        raise ValueError(f'Results length does not match GT length. (result lengths={len(result_multiple_mitotic_figure_classification)}, GT length={len(truth_dict[image_name_stacked_histopathology_roi_cropouts])})')
+    
+    output=[]
+    output_prob = []
+    prob_atypical = []
+    tumordomains = []
+
+    for res in result_multiple_mitotic_figure_classification:
+        if not isinstance(res,dict):
+            raise TypeError('Output format is wrong. Needs list of dictionaries.')
+        if ('class' not in res) or ('confidence' not in res):
+            raise NameError('Output format is wrong. Needs to be list of dictionaries with entries "class" and "confidence"')
+        if (res['class'] not in classes_to_ids.keys()):
+            raise NameError('Output format is wrong. Class needs to be either normal or atypical.')
+        if not isinstance(res['confidence'], float):
+            raise NameError('Output format is wrong. Confidence needs to be of type float.')
+
+
+        output.append(classes_to_ids[res['class']])
+        output_prob.append(res['confidence'])
+
+        # calculate the prob for atypical 
+        prob_atypical.append(res['confidence'] if res['class']=='atypical' else 1-res['confidence'])
+
+    y_true = np.array([classes_to_ids[x] for x in truth_dict[image_name_stacked_histopathology_roi_cropouts]])
+    output = np.array(output)
+    
+    tps = int(np.sum((output==1) & (y_true == 1)))
+    fps = int(np.sum((output==1) & (y_true == 0)))
+    fns = int(np.sum((output==0) & (y_true == 1)))
+    tns = int(np.sum((output==0) & (y_true == 0)))
+    
+    # Report back metrics but also the raw results (for ROC AUC)
     return {
-        "my_metric": random.choice([1, 0]),
+        "tps" : tps,
+        "fps" : fps,
+        "fns" : fns,
+        "tns" : tns,
+        "output" : output.tolist(),
+        "gt" : y_true.tolist(),
+        "score" : prob_atypical,
+        "tumor_domains" : domain_dict[image_name_stacked_histopathology_roi_cropouts],
     }
 
 
