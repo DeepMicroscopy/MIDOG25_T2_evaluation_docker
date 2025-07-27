@@ -184,8 +184,8 @@ def process_interf0(
         output.append(classes_to_ids[res['class']])
         output_prob.append(res['confidence'])
 
-        # calculate the prob for atypical 
-        prob_atypical.append(res['confidence'] if res['class']=='atypical' else 1-res['confidence'])
+        # append the prob for atypical
+        prob_atypical.append(res['confidence'])
 
     y_true = np.array([classes_to_ids[x] for x in truth_dict[image_name_stacked_histopathology_roi_cropouts]])
     output = np.array(output)
