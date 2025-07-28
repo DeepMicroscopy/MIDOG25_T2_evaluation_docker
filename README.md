@@ -72,7 +72,7 @@ The mitotic-figure.json files to be expected from the docker containers of the p
 ```
 
 Here, each `point` represents a detection, given by its x, y and z coordinate. We expect the z coordinate to be always 0. ***Note that the coordinates are given in millimeters, not pixels.*** 
-The example docker containers provided by us (here)[https://github.com/DeepMicroscopy/MIDOG25_T1_reference_docker] perform a translation between pixels and millimeters for each input image.
+The example docker containers provided by us [here](https://github.com/DeepMicroscopy/MIDOG25_T1_reference_docker) perform a translation between pixels and millimeters for each input image.
 
 Please note that the name of each point needs to be either `mitotic figure` or `non-mitotic figure`, depending on if the model decides it to be above threshold or not. This represents the classification information in the detection task.
 Independent of this decision, we require the probability of the model for each cell, i.e., the confidence of the model for each cell. This is used for calculation of metrics such as average precision.
